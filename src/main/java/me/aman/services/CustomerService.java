@@ -15,7 +15,7 @@ public class CustomerService {
 
 	public CustomerModel saveCustomer(CustomerModel cm) {
 		
-		Customer customer = new Customer(cm.getId(), cm.getName(), cm.getAge(), cm.getStatus());
+		Customer customer = new Customer(cm.getId(), cm.getName(), cm.getStatus());
 		customerRepo.save(customer);
 		return cm;
 	}
@@ -23,7 +23,7 @@ public class CustomerService {
 	public CustomerModel getCustomer(String id) {
 		
 		Customer cust = customerRepo.getReferenceById(id);
-		CustomerModel cm = new CustomerModel(cust.getName(), cust.getStatus(), cust.getAge(), cust.getId());
+		CustomerModel cm = new CustomerModel(cust.getName(), cust.getStatus(), cust.getId());
 		return cm;		
 	}
 }
