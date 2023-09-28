@@ -1,7 +1,8 @@
-package me.aman.controllers;
+package com.project.customerservice.controllers;
 
 
 
+import com.project.customerservice.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.aman.models.CustomerModel;
-import me.aman.services.CustomerService;
+import com.project.customerservice.models.CustomerModel;
 
 @RestController
 @RequestMapping(value = "/v1/customerservice")

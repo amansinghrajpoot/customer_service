@@ -1,11 +1,11 @@
-package me.aman.services;
+package com.project.customerservice.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import me.aman.entities.Customer;
-import me.aman.models.CustomerModel;
-import me.aman.repository.CustomerRepository;
+import com.project.customerservice.entities.Customer;
+import com.project.customerservice.models.CustomerModel;
+import com.project.customerservice.repository.CustomerRepository;
 
 @Service
 public class CustomerService {

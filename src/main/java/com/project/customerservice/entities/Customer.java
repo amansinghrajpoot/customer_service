@@ -1,4 +1,4 @@
-package me.aman.entities;
+package com.project.customerservice.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
