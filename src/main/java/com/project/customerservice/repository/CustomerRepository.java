@@ -1,10 +1,12 @@
 package com.project.customerservice.repository;
 
 import com.project.customerservice.entities.Customer;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-@Repository
-public interface CustomerRepository extends JpaRepository<Customer, String> {
+import java.util.Optional;
 
+@Component
+public interface CustomerRepository {
+    <S extends Customer> S save(S entity);
+    Optional<Customer> findById(String id);
 }

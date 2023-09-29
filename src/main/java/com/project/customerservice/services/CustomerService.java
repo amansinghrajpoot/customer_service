@@ -7,23 +7,27 @@ import com.project.customerservice.entities.Customer;
 import com.project.customerservice.models.CustomerModel;
 import com.project.customerservice.repository.CustomerRepository;
 
+import java.util.Optional;
+
 @Service
 public class CustomerService {
 	
 	@Autowired
 	private CustomerRepository customerRepo;
 
-	public CustomerModel saveCustomer(CustomerModel cm) {
+	public void saveCustomer(CustomerModel cm) {
 		
 		Customer customer = new Customer(cm.getId(), cm.getName(), cm.getStatus());
 		customerRepo.save(customer);
-		return cm;
 	}
 	
 	public CustomerModel getCustomer(String id) {
-		
-		Customer cust = customerRepo.getReferenceById(id);
-		CustomerModel cm = new CustomerModel(cust.getName(), cust.getStatus(), cust.getId());
-		return cm;		
+
+		Optional<Customer> customer = customerRepo.findById(id);
+		CustomerModel customerModel = customer
+				.map(value -> new CustomerModel(value.getName(), value.getStatus(), value.getId()))
+				.orElse(null);
+
+		return customerModel;
 	}
 }

@@ -1,27 +1,23 @@
 package com.project.customerservice.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
-
-@Entity
+@DynamoDBTable(tableName = "Customer")
 @Getter
 @Setter
 public class Customer {
 
-	@Id
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
+    @DynamoDBHashKey
 	private String id;
 	private String name;
 	private String status;
-	
+
 	public Customer() {
-		
 	}
+
 	public Customer(String id, String name, String status) {
 		super();
 		this.id = id;
@@ -32,7 +28,4 @@ public class Customer {
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name  + ", status=" + status + "]";
 	}
-	
-	
-	
 }
