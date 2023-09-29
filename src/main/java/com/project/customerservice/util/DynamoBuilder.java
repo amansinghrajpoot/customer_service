@@ -15,10 +15,10 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class DynamoBuilder {
-    private String region;
-    private String endpoint;
-    private String secretKey;
-    private String accessKey;
+    private final String region;
+    private final String endpoint;
+    private final String secretKey;
+    private final String accessKey;
 
     public DynamoBuilder(
             @Value("${aws.dynamodb.region}") String region,
