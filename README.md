@@ -68,7 +68,7 @@ There are a few options to run the application (from more flexible to least)
 
 ### Invoking CDaS
 
-You can use your favourite REST client (e.g. [Postman](https://blog.postman.com/postman-now-supports-grpc/) 
+You can use your favourite REST client (e.g. [Postman](https://blog.postman.com/postman-now-supports-grpc/))
 
 Or you can use ```curl```
 
