@@ -36,7 +36,7 @@ Install and run DynamoDB on your local machine:
     4. Verify DynamoDB
         * `aws dynamodb list-tables --endpoint-url http://localhost:8000`
     5. Create table for Customer
-        * `aws dynamodb create-table --cli-input-json file://create-table.json --endpoint-url http://localhost:8000`
+        * `aws dynamodb create-table --cli-input-json file://customer-table-definition.json --endpoint-url http://localhost:8000`
     6. [Reference](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html)
 
 
