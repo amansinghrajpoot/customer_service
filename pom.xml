@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>customer-service</artifactId>
@@ -19,8 +19,15 @@
 		<jackson.version>2.15.1</jackson.version>
 		<lombok.version>1.18.26</lombok.version>
 		<amazonaws.version>1.12.522</amazonaws.version>
+		<java-jwt.version>0.9.1</java-jwt.version>
 	</properties>
+
 	<dependencies>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${java-jwt.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -70,7 +77,7 @@
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-sts</artifactId>
-			<version>${amazonaws.version}</version> <!-- Use the appropriate version -->
+			<version>${amazonaws.version}</version>
 		</dependency>
 	</dependencies>
 
