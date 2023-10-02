@@ -10,3 +10,10 @@ aws:
     accessKey: "local"
     endpoint: "http://localhost:8000"
     region: "us-west-2"
+
+security:
+  token:
+    enabled: true
+    bypass: "test"
+    keyFilePath: "secrets/customer-private.key"
+
