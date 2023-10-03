@@ -2,12 +2,8 @@ package com.project.customerservice.entities;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import lombok.Getter;
-import lombok.Setter;
 
 @DynamoDBTable(tableName = "Customer")
-@Getter
-@Setter
 public class Customer {
 
     @DynamoDBHashKey
@@ -27,5 +23,29 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name  + ", status=" + status + "]";
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

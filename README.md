@@ -54,7 +54,7 @@ There are a few options to run the application (from more flexible to least)
 
 2. Start the service with Maven.
     ```bash
-    mvn spring-boot:run -Dspring.profiles.active=default
+    mvn spring-boot:run -Dspring.profiles.active=local
     ```
 
 3. Package the jar file and run it
@@ -64,7 +64,7 @@ There are a few options to run the application (from more flexible to least)
     java -jar grpc/target/cart-data-service-exec.jar
     ```
 
-### Invoking CDaS
+### Invoking Customer Service
 
 You can use your favourite REST client (e.g. [Postman](https://blog.postman.com/postman-now-supports-grpc/))
 
@@ -90,8 +90,32 @@ curl \
 You can bypass Authentication in local environment by sending header "client-id: test"
 ```bash
 curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "client-id: test" \
+  http://localhost:7979/v1/customerservice/addcustomer \
+  -d '{"name":"David","status":"active","id":"123e4567-e89b-12d3-a456-426614174000"}'
+```
+```bash
+curl \
   -X GET \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
+  "http://localhost:7979/v1/customerservice/getcustomer?id=123e4567-e89b-12d3-a456-426614174000"
+```
+Or send this JWT on local environment
+```bash
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlSWQiOiJsb2NhbCJ9.incamOSMaNllfoIWYtemE_X9M-vvf3tTTRrjDkE7bQs" \
+  http://localhost:7979/v1/customerservice/addcustomer \
+  -d '{"name":"David","status":"active","id":"123e4567-e89b-12d3-a456-426614174000"}'
+```
+```bash
+curl \
+  -X GET \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlSWQiOiJsb2NhbCJ9.incamOSMaNllfoIWYtemE_X9M-vvf3tTTRrjDkE7bQs" \
   "http://localhost:7979/v1/customerservice/getcustomer?id=123e4567-e89b-12d3-a456-426614174000"
 ```
