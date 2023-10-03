@@ -11,6 +11,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.Objects;
 
@@ -36,6 +38,9 @@ public class AuthInterceptor {
     private HeaderUtils headerUtils;
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private Environment environment;
+
     public AuthInterceptor(
             @Value("${security.token.enabled}") boolean enabled,
             @Value("${security.token.bypass}") String bypass,
@@ -50,7 +55,8 @@ public class AuthInterceptor {
 
     @Before("execution(* com.project.customerservice.controllers.CustomerController.*(..))")
     public void authenticate() {
-        if (!enabled || Objects.equals(bypass, headerUtils.getClientId())){
+        String[] activeProfiles = environment.getActiveProfiles();
+        if (!enabled || ( Objects.equals(bypass, headerUtils.getClientId()) && Arrays.asList(activeProfiles).contains("local")) ) {
             return;
         }
         validateToken();
@@ -67,7 +73,7 @@ public class AuthInterceptor {
         parseJWT(chunks);
         SignatureAlgorithm sa = SignatureAlgorithm.valueOf(jwtHeader.getAlg());
 
-        SecretKeySpec secretKeySpec = new SecretKeySpec(readSecretKeyFromFile().getBytes(), sa.getJcaName());
+        SecretKeySpec secretKeySpec = new SecretKeySpec(readSecretKey().getBytes(), sa.getJcaName());
 
         String tokenWithoutSignature = chunks[0] + "." + chunks[1];
         String signature = chunks[2];
@@ -95,14 +101,22 @@ public class AuthInterceptor {
     }
 
     // Secret key should be read from Vault, I will use vault later.
+    private String readSecretKey(){
+        String[] activeProfiles = environment.getActiveProfiles();
+
+        if (Arrays.asList(activeProfiles).contains("local")) {
+            return readSecretKeyFromFile();
+        }
+        return null;
+    }
+
     private String readSecretKeyFromFile(){
         try {
             Path path = Paths.get(keyFilePath);
             byte[] secretKeyBytes = Files.readAllBytes(path);
             return new String(secretKeyBytes, StandardCharsets.UTF_8);
-            // Now, 'secretKey' contains the key as a string
         } catch (IOException e) {
-           throw new RuntimeException("Can not read Secret key");
+            throw new RuntimeException("Can not read Secret key in local env");
         }
     }
 }

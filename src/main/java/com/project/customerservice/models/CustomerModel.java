@@ -1,14 +1,12 @@
 package com.project.customerservice.models;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class CustomerModel {
 	private String name;
 	private String status;
 	private String id;
+
+	public CustomerModel(){
+	}
 
 	public CustomerModel(String name, String status, String id) {
 		super();
@@ -19,5 +17,29 @@ public class CustomerModel {
 	@Override
 	public String toString() {
 		return "CustomerModel [name=" + name + ", status=" + status +  ", id=" + id + "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
