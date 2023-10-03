@@ -26,7 +26,6 @@ Install and run DynamoDB on your local machine:
             - Enter output : "json"
     4. [Reference](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-
 2. Install DynamoDB
 
     1. [Download DynamoDB](https://s3.us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz)
@@ -38,7 +37,6 @@ Install and run DynamoDB on your local machine:
     5. Create table for Customer
         * `aws dynamodb create-table --cli-input-json file://customer-table-definition.json --endpoint-url http://localhost:8000`
     6. [Reference](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html)
-
 
 3. Visualizing the DynamoDB Table data
 
@@ -73,15 +71,27 @@ You can use your favourite REST client (e.g. [Postman](https://blog.postman.com/
 Or you can use ```curl```
 
 ```bash
-curl 
-  -X POST 
-  -H "Content-Type: application/json" 
-  http://localhost:7979/v1/customerservice/addcustomer 
+curl \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "client-id: test" \
+  -H "Authorization: Bearer <JWT TOKEN>" \
+  http://localhost:7979/v1/customerservice/addcustomer \
   -d '{<DATA>}'
 ```
 ```bash
 curl \
   -X GET \
   -H "Content-Type: application/json" \
-  "http://localhost:7979/v1/customerservice/getcustomer?id=<CUSTOMER_ID>"
+  -H "client-id: test" \
+  -H "Authorization: Bearer <JWT TOKEN>" \
+  "http://localhost:7979/v1/customerservice/getcustomer?id=123e4567-e89b-12d3-a456-426614174000"
+```
+You can bypass Authentication in local environment by sending header "client-id: test"
+```bash
+curl \
+  -X GET \
+  -H "Content-Type: application/json" \
+  -H "client-id: test" \
+  "http://localhost:7979/v1/customerservice/getcustomer?id=123e4567-e89b-12d3-a456-426614174000"
 ```
