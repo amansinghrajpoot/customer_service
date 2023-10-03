@@ -1,7 +1,5 @@
 package com.project.customerservice.controllers;
 
-
-
 import com.project.customerservice.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
