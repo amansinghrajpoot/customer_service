@@ -10,7 +10,8 @@ public class AuthenticationFailedException extends RuntimeException {
         this.httpStatus = httpStatus;
     }
 
-    public HttpStatus getHttpStatus() {
-        return httpStatus;
+    @Override
+    public synchronized Throwable fillInStackTrace() {
+        return this;
     }
 }
