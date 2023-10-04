@@ -21,9 +21,15 @@
 		<amazonaws.version>1.12.522</amazonaws.version>
 		<java-jwt.version>0.9.1</java-jwt.version>
 		<log4j.version>2.17.1</log4j.version>
+		<bson.version>2.3</bson.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>bson</artifactId>
+			<version>${bson.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>

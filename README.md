@@ -85,7 +85,7 @@ curl \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
   -H "Authorization: Bearer <JWT TOKEN>" \
-  "http://localhost:7979/v1/customerservice/getcustomer?id=123e4567-e89b-12d3-a456-426614174000"
+  "http://localhost:7979/v1/customerservice/getcustomer?id=651d97d23b7c943c51b69223"
 ```
 You can bypass Authentication in local environment by sending header "client-id: test"
 ```bash
@@ -94,14 +94,14 @@ curl \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
   http://localhost:7979/v1/customerservice/addcustomer \
-  -d '{"name":"David","status":"active","id":"123e4567-e89b-12d3-a456-426614174000"}'
+  -d '{<DATA>}'
 ```
 ```bash
 curl \
   -X GET \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
-  "http://localhost:7979/v1/customerservice/getcustomer?id=123e4567-e89b-12d3-a456-426614174000"
+  "http://localhost:7979/v1/customerservice/getcustomer?id=651d97d23b7c943c51b69223"
 ```
 Or send this JWT on local environment
 ```bash
@@ -110,12 +110,12 @@ curl \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlSWQiOiJsb2NhbCJ9.incamOSMaNllfoIWYtemE_X9M-vvf3tTTRrjDkE7bQs" \
   http://localhost:7979/v1/customerservice/addcustomer \
-  -d '{"name":"David","status":"active","id":"123e4567-e89b-12d3-a456-426614174000"}'
+  -d '{<DATA>}'
 ```
 ```bash
 curl \
   -X GET \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlSWQiOiJsb2NhbCJ9.incamOSMaNllfoIWYtemE_X9M-vvf3tTTRrjDkE7bQs" \
-  "http://localhost:7979/v1/customerservice/getcustomer?id=123e4567-e89b-12d3-a456-426614174000"
+  "http://localhost:7979/v1/customerservice/getcustomer?id=651d97d23b7c943c51b69223"
 ```

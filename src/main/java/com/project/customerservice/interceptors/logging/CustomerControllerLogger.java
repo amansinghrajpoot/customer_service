@@ -1,7 +1,7 @@
 package com.project.customerservice.interceptors.logging;
 
 import com.project.customerservice.controllers.CustomerController;
-import com.project.customerservice.models.CustomerModel;
+import com.project.customerservice.models.CustomerRequestModel;
 import com.project.customerservice.util.HeaderUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -27,12 +27,13 @@ public class CustomerControllerLogger {
                 "Request received on addCustomer endpoint: "
                         + headerUtils.formatRequest(headerUtils.getHttpRequest())
         );
-        HttpStatus httpStatus = (HttpStatus) joinPoint.proceed();
+        @SuppressWarnings("unchecked")
+        ResponseEntity<String> result = (ResponseEntity<String>) joinPoint.proceed();
         logger.info(
                     "Response sent from addCustomer endpoint: "
-                            + httpStatus
+                            + result
         );
-        return httpStatus;
+        return result;
     }
 
     @Around("execution(* com.project.customerservice.controllers.CustomerController.getCustomer(..))")
@@ -42,7 +43,7 @@ public class CustomerControllerLogger {
                         + headerUtils.formatRequest(headerUtils.getHttpRequest())
         );
         @SuppressWarnings("unchecked")
-        ResponseEntity<CustomerModel> responseEntity = (ResponseEntity<CustomerModel>) joinPoint.proceed();
+        ResponseEntity<CustomerRequestModel> responseEntity = (ResponseEntity<CustomerRequestModel>) joinPoint.proceed();
         logger.info(
                     "Response sent from getCustomer endpoint: "
                             + responseEntity.toString()
