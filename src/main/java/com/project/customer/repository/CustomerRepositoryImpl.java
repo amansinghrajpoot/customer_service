@@ -1,7 +1,7 @@
-package com.project.customerservice.repository;
+package com.project.customer.repository;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.project.customerservice.entities.Customer;
+import com.project.customer.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

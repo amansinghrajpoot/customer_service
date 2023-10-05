@@ -1,4 +1,4 @@
-package com.project.customerservice.exceptions;
+package com.project.customer.exceptions;
 
 import org.springframework.http.HttpStatus;
 

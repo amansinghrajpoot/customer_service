@@ -1,15 +1,14 @@
-package com.project.customerservice.interceptors.logging;
+package com.project.customer.interceptors.logging;
 
-import com.project.customerservice.controllers.CustomerController;
-import com.project.customerservice.models.CustomerRequestModel;
-import com.project.customerservice.util.HeaderUtils;
+import com.project.customer.controllers.CustomerController;
+import com.project.customer.models.CustomerRequestModel;
+import com.project.customer.util.HeaderUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +20,7 @@ public class CustomerControllerLogger {
     @Autowired
     private HeaderUtils headerUtils;
 
-    @Around("execution(* com.project.customerservice.controllers.CustomerController.addCustomer(..))")
+    @Around("execution(* com.project.customer.controllers.CustomerController.addCustomer(..))")
     public Object addCustomerLogger(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info(
                 "Request received on addCustomer endpoint: "
@@ -36,7 +35,7 @@ public class CustomerControllerLogger {
         return result;
     }
 
-    @Around("execution(* com.project.customerservice.controllers.CustomerController.getCustomer(..))")
+    @Around("execution(* com.project.customer.controllers.CustomerController.getCustomer(..))")
     public Object getCustomerLogger(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info(
                 "Request received on getCustomer endpoint: "

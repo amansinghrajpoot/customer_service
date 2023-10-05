@@ -1,9 +1,9 @@
-package com.project.customerservice.interceptors.auth;
+package com.project.customer.interceptors.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.customerservice.exceptions.AuthenticationFailedException;
-import com.project.customerservice.interceptors.auth.models.JwtHeader;
-import com.project.customerservice.util.HeaderUtils;
+import com.project.customer.exceptions.AuthenticationFailedException;
+import com.project.customer.interceptors.auth.models.JwtHeader;
+import com.project.customer.util.HeaderUtils;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.DefaultJwtSignatureValidator;
 import org.aspectj.lang.annotation.Aspect;
@@ -53,7 +53,7 @@ public class AuthInterceptor {
         this.keyFilePath = keyFilePath;
     }
 
-    @Before("execution(* com.project.customerservice.controllers.CustomerController.*(..))")
+    @Before("execution(* com.project.customer.controllers.CustomerController.*(..))")
     public void authenticate() {
         String[] activeProfiles = environment.getActiveProfiles();
         if (!enabled || ( Objects.equals(bypass, headerUtils.getClientId()) && Arrays.asList(activeProfiles).contains("local")) ) {
