@@ -119,3 +119,7 @@ curl \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzZXJ2aWNlSWQiOiJsb2NhbCJ9.incamOSMaNllfoIWYtemE_X9M-vvf3tTTRrjDkE7bQs" \
   "http://localhost:7979/v1/customerservice/getcustomer?id=651d97d23b7c943c51b69223"
 ```
+Sample Data for POST request
+```json
+{ "name" : "John Doe", "status": "Active", "email": "johndoe@example.com" }
+```

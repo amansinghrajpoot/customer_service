@@ -18,7 +18,7 @@ public class CustomerService {
 	private CustomerRepository customerRepo;
 
 	public String saveCustomer(CustomerRequestModel cm) {
-		Customer customer = new Customer(new ObjectId().toString(), cm.getName(), cm.getStatus());
+		Customer customer = new Customer(new ObjectId().toString(), cm.getName(), cm.getStatus(), cm.getEmail());
 		customerRepo.save(customer);
 		return customer.getId();
 	}
@@ -27,7 +27,7 @@ public class CustomerService {
 
 		Optional<Customer> customer = customerRepo.findById(id);
 		CustomerResponseModel customerResponseModel = customer
-				.map(value -> new CustomerResponseModel(value.getName(), value.getStatus(), value.getId()))
+				.map(value -> new CustomerResponseModel(value.getName(), value.getStatus(), value.getId(), value.getEmail()))
 				.orElse(null);
 
 		return customerResponseModel;
