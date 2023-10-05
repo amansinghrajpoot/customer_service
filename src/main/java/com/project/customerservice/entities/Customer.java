@@ -10,19 +10,34 @@ public class Customer {
 	private String id;
 	private String name;
 	private String status;
-
+	private String email;
 	public Customer() {
 	}
 
-	public Customer(String id, String name, String status) {
+	public Customer(String id, String name, String status, String email) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.status = status;
+		this.email = email;
 	}
+
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name  + ", status=" + status + "]";
+		return "Customer{" +
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", status='" + status + '\'' +
+				", email='" + email + '\'' +
+				'}';
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getId() {
