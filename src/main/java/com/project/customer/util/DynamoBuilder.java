@@ -1,4 +1,4 @@
-package com.project.customerservice.util;
+package com.project.customer.util;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;

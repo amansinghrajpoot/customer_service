@@ -1,6 +1,6 @@
-package com.project.customerservice.repository;
+package com.project.customer.repository;
 
-import com.project.customerservice.entities.Customer;
+import com.project.customer.entities.Customer;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

@@ -1,8 +1,8 @@
-package com.project.customerservice.util;
+package com.project.customer.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.project.customerservice.controllers.CustomerController;
+import com.project.customer.controllers.CustomerController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

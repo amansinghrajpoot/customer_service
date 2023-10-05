@@ -1,4 +1,4 @@
-package com.project.customerservice.interceptors.auth.models;
+package com.project.customer.interceptors.auth.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

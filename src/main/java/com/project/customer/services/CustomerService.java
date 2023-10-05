@@ -1,13 +1,13 @@
-package com.project.customerservice.services;
+package com.project.customer.services;
 
-import com.project.customerservice.models.CustomerResponseModel;
+import com.project.customer.models.CustomerResponseModel;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.customerservice.entities.Customer;
-import com.project.customerservice.models.CustomerRequestModel;
-import com.project.customerservice.repository.CustomerRepository;
+import com.project.customer.entities.Customer;
+import com.project.customer.models.CustomerRequestModel;
+import com.project.customer.repository.CustomerRepository;
 
 import java.util.Optional;
 

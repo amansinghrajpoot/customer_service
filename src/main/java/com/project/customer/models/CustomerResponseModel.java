@@ -1,4 +1,4 @@
-package com.project.customerservice.models;
+package com.project.customer.models;
 
 public class CustomerResponseModel {
     private String name;
