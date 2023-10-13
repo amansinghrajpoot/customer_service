@@ -22,6 +22,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Optional<Customer> findById(String id) {
         Customer customer = dynamoDBMapper.load(Customer.class, id);
-        return Optional.of(customer);
+        return Optional.ofNullable(customer);
     }
 }

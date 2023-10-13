@@ -4,8 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.customer.exceptions.AuthenticationFailedException;
 import com.project.customer.interceptors.auth.models.JwtHeader;
 import com.project.customer.util.HeaderUtils;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.crypto.DefaultJwtSignatureValidator;
+import io.fusionauth.jwt.Verifier;
+import io.fusionauth.jwt.domain.JWT;
+import io.fusionauth.jwt.hmac.HMACVerifier;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
@@ -16,14 +17,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Base64;
 import java.util.Objects;
 
 @Component
@@ -65,46 +64,23 @@ public class AuthInterceptor {
     private void validateToken() {
         String authenticationType = headerUtils.getToken().split(" ")[0];
         String jwtToken = headerUtils.getToken().split(" ")[1];
-        String[] chunks = jwtToken.split("\\.");
 
         if (!authenticationType.equals("Bearer")) {
             logger.error("Invalid Authentication type: " + authenticationType);
             throw new AuthenticationFailedException(HttpStatus.UNAUTHORIZED, "Invalid authentication type: " + authenticationType);
         }
-        parseJWT(chunks);
-        SignatureAlgorithm sa = SignatureAlgorithm.valueOf(jwtHeader.getAlg());
-
-        SecretKeySpec secretKeySpec = null;
         try {
-           secretKeySpec = new SecretKeySpec(Objects.requireNonNull(readSecretKey()).getBytes(), sa.getJcaName());
-        } catch (Exception e) {
-            logger.error("Can not read secret key");
-            throw new AuthenticationFailedException(HttpStatus.INTERNAL_SERVER_ERROR, null);
-        }
-        String tokenWithoutSignature = chunks[0] + "." + chunks[1];
-        String signature = chunks[2];
+             String secretKey = readSecretKey();
+             if (secretKey == null ) throw new RuntimeException();
+             Verifier verifier  = HMACVerifier.newVerifier(secretKey); // Using HS256 to encode/decode.
+             JWT.getDecoder().decode(String.valueOf(jwtToken), verifier);
+             logger.info("Authentication successful, valid JWT token: " + jwtToken);
 
-        DefaultJwtSignatureValidator validator = new DefaultJwtSignatureValidator(sa, secretKeySpec);
+           } catch (Exception e) {
+                logger.error("Unable to read local test secret key " + e);
+                throw new AuthenticationFailedException(HttpStatus.INTERNAL_SERVER_ERROR, null);
+           }
 
-        if (!validator.isValid(tokenWithoutSignature, signature)) {
-            logger.error("JWT Authentication Failed: " + jwtToken);
-            throw new AuthenticationFailedException(HttpStatus.UNAUTHORIZED, "JWT Authentication Failed");
-        }
-        logger.info("Authentication successful, valid JWT token: " + jwtToken);
-    }
-
-    private void parseJWT(String[] chunks){
-
-        Base64.Decoder decoder = Base64.getUrlDecoder();
-
-        String header = new String(decoder.decode(chunks[0]));
-        String payload = new String(decoder.decode(chunks[1]));
-
-        try {
-            jwtHeader = objectMapper.readValue(header, JwtHeader.class);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
     }
 
     // Secret key should be read from Vault, I will use vault later.
