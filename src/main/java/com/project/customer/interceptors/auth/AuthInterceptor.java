@@ -77,7 +77,7 @@ public class AuthInterceptor {
              logger.info("Authentication successful, valid JWT token: " + jwtToken);
 
            } catch (Exception e) {
-                logger.error("Unable to read local test secret key " + e);
+                logger.error("Unable to read local test secret key or Invalid token " + e);
                 throw new AuthenticationFailedException(HttpStatus.INTERNAL_SERVER_ERROR, null);
            }
 
