@@ -128,7 +128,8 @@ Sample Data for POST request
 
 ```json
 {
-  "alg": "HS256"
+  "alg": "HS256",
+  "typ": "JWT"
 }
 ```
 Use local-customer-service-public.pem to encode the token on local machine. 
