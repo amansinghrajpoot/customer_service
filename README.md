@@ -123,3 +123,12 @@ Sample Data for POST request
 ```json
 { "name" : "John Doe", "status": "Active", "email": "johndoe@example.com" }
 ```
+
+### JWT token algo
+
+```json
+{
+  "alg": "HS256"
+}
+```
+Use local private key to encode the token on local machine. 
