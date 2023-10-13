@@ -59,10 +59,7 @@ There are a few options to run the application (from more flexible to least)
 
 3. Package the jar file and run it
 
-    ```bash
-    mvn clean package
-    java -jar grpc/target/cart-data-service-exec.jar
-    ```
+   // TO-DO
 
 ### Invoking Customer Service
 
