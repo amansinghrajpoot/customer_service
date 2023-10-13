@@ -131,4 +131,4 @@ Sample Data for POST request
   "alg": "HS256"
 }
 ```
-Use local private key to encode the token on local machine. 
+Use local-customer-service-public.pem to encode the token on local machine. 
