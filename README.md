@@ -108,7 +108,7 @@ Or send this JWT on local environment
 curl \
   -X POST -i \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIERvZSJ9.tnUtI9DjJA2wUiHs211LtaP7O1ur17cutWddXm_nNcM" \
+  -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTczOTkyMDUsImlhdCI6MTY5NzM5NTYwNSwiaXNzIjoid3d3LmFjbWUuY29tIiwic3ViIjoiZjFlMzNhYjMtMDI3Zi00N2M1LWJiMDctOGRkOGFiMzdhMmQzIn0.cAP9Tav4VxO_JDxh7gL4AIoFVUZbeC27wwz5NYb-AY2OLss_mmFZGzgDPazmNYrw2_OyjDJqrTicffxF3kvJQiRHuljg4YOC0XgTwDo7aaLvw9DJFSPU8UAdVYEHZsD_CicOBkizNZlWeeIg8BwmxD6_KQdd454v7Kefr_uagMw6JUWHcyn8YZ68JexNtAyVv4ImEGd4QHPKoli5a2iWDRiAJKHG5LpKPE2DZw0avH4b6CJISz5jmTjRkN2357MS6Zudj9Hee35lJGEDxMND9wXIlAcju6vgMCm02KnY56JcnbD5StvZhE5nKcoU7tA0Rh6XKAI73Du4pn-6W11trQ" \
   http://localhost:7979/v1/customerservice/addcustomer \
   -d '{<DATA>}'
 ```
@@ -116,7 +116,7 @@ curl \
 curl \
   -X GET -i \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIERvZSJ9.tnUtI9DjJA2wUiHs211LtaP7O1ur17cutWddXm_nNcM" \
+  -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTczOTkyMDUsImlhdCI6MTY5NzM5NTYwNSwiaXNzIjoid3d3LmFjbWUuY29tIiwic3ViIjoiZjFlMzNhYjMtMDI3Zi00N2M1LWJiMDctOGRkOGFiMzdhMmQzIn0.cAP9Tav4VxO_JDxh7gL4AIoFVUZbeC27wwz5NYb-AY2OLss_mmFZGzgDPazmNYrw2_OyjDJqrTicffxF3kvJQiRHuljg4YOC0XgTwDo7aaLvw9DJFSPU8UAdVYEHZsD_CicOBkizNZlWeeIg8BwmxD6_KQdd454v7Kefr_uagMw6JUWHcyn8YZ68JexNtAyVv4ImEGd4QHPKoli5a2iWDRiAJKHG5LpKPE2DZw0avH4b6CJISz5jmTjRkN2357MS6Zudj9Hee35lJGEDxMND9wXIlAcju6vgMCm02KnY56JcnbD5StvZhE5nKcoU7tA0Rh6XKAI73Du4pn-6W11trQ" \
   "http://localhost:7979/v1/customerservice/getcustomer?id=65296178d72d966c0035163b"
 ```
 Sample Data for POST request
