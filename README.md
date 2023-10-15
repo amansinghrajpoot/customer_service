@@ -59,7 +59,10 @@ There are a few options to run the application (from more flexible to least)
 
 3. Package the jar file and run it
 
-   // TO-DO
+```bash
+mvn clean package
+java -jar ./target/customer-service-exec.jar --spring.profiles.active=local
+```
 
 ### Invoking Customer Service
 

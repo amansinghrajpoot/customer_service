@@ -99,8 +99,25 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.5.9.RELEASE</version>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<id>repackage</id>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<finalName>customer-service</finalName>
+							<outputDirectory>${project.basedir}/target</outputDirectory>
+							<classifier>exec</classifier>
+							<mainClass>com.techorgx.api.CustomerServiceApplication</mainClass>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
