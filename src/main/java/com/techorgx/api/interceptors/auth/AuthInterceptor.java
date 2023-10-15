@@ -6,7 +6,7 @@ import com.techorgx.api.interceptors.auth.models.JwtHeader;
 import com.techorgx.api.util.HeaderUtils;
 import io.fusionauth.jwt.Verifier;
 import io.fusionauth.jwt.domain.JWT;
-import io.fusionauth.jwt.hmac.HMACVerifier;
+import io.fusionauth.jwt.rsa.RSAVerifier;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
@@ -72,7 +72,7 @@ public class AuthInterceptor {
         try {
              String secretKey = readSecretKey();
              if (secretKey == null ) throw new RuntimeException();
-             Verifier verifier  = HMACVerifier.newVerifier(secretKey); // Using HS256 to encode/decode.
+             Verifier verifier  = RSAVerifier.newVerifier(secretKey); // Using RS256 to encode/decode.
              JWT.getDecoder().decode(String.valueOf(jwtToken), verifier);
              logger.info("Authentication successful, valid JWT token: " + jwtToken);
 
