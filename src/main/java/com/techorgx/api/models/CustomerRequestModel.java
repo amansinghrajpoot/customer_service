@@ -1,50 +1,39 @@
 package com.techorgx.api.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class CustomerRequestModel {
-	private String name;
-	private String status;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String city;
+	private String pincode;
 	private String email;
 
 	public CustomerRequestModel(){
 	}
 
-	public CustomerRequestModel(String name, String status, String id, String email) {
-		super();
-		this.name = name;
-		this.status = status;
+	public CustomerRequestModel(String firstName, String lastName, String address, String city, String pincode, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.pincode = pincode;
 		this.email = email;
 	}
 
 	@Override
 	public String toString() {
 		return "CustomerRequestModel{" +
-				"name='" + name + '\'' +
-				", status='" + status + '\'' +
+				"firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", Address='" + address + '\'' +
+				", city='" + city + '\'' +
+				", pincode='" + pincode + '\'' +
 				", email='" + email + '\'' +
 				'}';
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 }
