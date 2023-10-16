@@ -121,7 +121,7 @@ curl \
 ```
 Sample Data for POST request
 ```json
-{"firstName": "John", "lastName": "Doe", "address": "123 Main Street", "city": "Anytown", "pincode": "12345", "email": "johndoe@example.com"}
+{"id": "5fae5148ae3f01000165f097", "firstName": "John", "lastName": "Doe", "address": "123 Main Street", "city": "Anytown", "pincode": "12345", "email": "johndoe@example.com"}
 ```
 
 ### JWT token algo

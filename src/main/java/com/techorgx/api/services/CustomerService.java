@@ -2,7 +2,6 @@ package com.techorgx.api.services;
 
 import com.techorgx.api.models.CustomerResponseModel;
 import com.techorgx.api.repository.CustomerRepository;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,7 @@ public class CustomerService {
 
 	public String saveCustomer(CustomerRequestModel cm) {
 		Customer customer = new Customer(
-				new ObjectId().toString(),
+				cm.getId(),
 				cm.getFirstName(),
 				cm.getLastName(),
 				cm.getAddress(),

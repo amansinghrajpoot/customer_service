@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CustomerRequestModel {
+	private String id;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -16,7 +17,8 @@ public class CustomerRequestModel {
 	public CustomerRequestModel(){
 	}
 
-	public CustomerRequestModel(String firstName, String lastName, String address, String city, String pincode, String email) {
+	public CustomerRequestModel(String id, String firstName, String lastName, String address, String city, String pincode, String email) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -28,7 +30,8 @@ public class CustomerRequestModel {
 	@Override
 	public String toString() {
 		return "CustomerRequestModel{" +
-				"firstName='" + firstName + '\'' +
+				"id='" + id + '\'' +
+				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
 				", Address='" + address + '\'' +
 				", city='" + city + '\'' +
