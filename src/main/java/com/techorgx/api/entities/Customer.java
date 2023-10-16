@@ -2,23 +2,32 @@ package com.techorgx.api.entities;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @DynamoDBTable(tableName = "Customer")
 public class Customer {
 
     @DynamoDBHashKey
 	private String id;
-	private String name;
-	private String status;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String city;
+	private String pincode;
 	private String email;
 	public Customer() {
 	}
 
-	public Customer(String id, String name, String status, String email) {
-		super();
+	public Customer(String id, String firstName, String lastName, String address, String city, String pincode, String email) {
 		this.id = id;
-		this.name = name;
-		this.status = status;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.pincode = pincode;
 		this.email = email;
 	}
 
@@ -26,41 +35,12 @@ public class Customer {
 	public String toString() {
 		return "Customer{" +
 				"id='" + id + '\'' +
-				", name='" + name + '\'' +
-				", status='" + status + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", address='" + address + '\'' +
+				", city='" + city + '\'' +
+				", pincode='" + pincode + '\'' +
 				", email='" + email + '\'' +
 				'}';
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 }

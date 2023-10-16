@@ -18,7 +18,15 @@ public class CustomerService {
 	private CustomerRepository customerRepo;
 
 	public String saveCustomer(CustomerRequestModel cm) {
-		Customer customer = new Customer(new ObjectId().toString(), cm.getName(), cm.getStatus(), cm.getEmail());
+		Customer customer = new Customer(
+				new ObjectId().toString(),
+				cm.getFirstName(),
+				cm.getLastName(),
+				cm.getAddress(),
+				cm.getCity(),
+				cm.getPincode(),
+				cm.getEmail()
+		);
 		customerRepo.save(customer);
 		return customer.getId();
 	}
@@ -26,10 +34,17 @@ public class CustomerService {
 	public CustomerResponseModel getCustomer(String id) {
 
 		Optional<Customer> customer = customerRepo.findById(id);
-		CustomerResponseModel customerResponseModel = customer
-				.map(value -> new CustomerResponseModel(value.getName(), value.getStatus(), value.getId(), value.getEmail()))
-				.orElse(null);
 
-		return customerResponseModel;
+        return customer
+				.map(cm -> new CustomerResponseModel(
+						cm.getId(),
+						cm.getFirstName(),
+						cm.getLastName(),
+						cm.getAddress(),
+						cm.getCity(),
+						cm.getPincode(),
+						cm.getEmail()
+				))
+				.orElse(null);
 	}
 }
