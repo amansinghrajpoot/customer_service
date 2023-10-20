@@ -33,12 +33,14 @@ public class HeaderUtils {
 
     public String getClientId(){
         HttpServletRequest request = getHttpRequest();
-        return request.getHeader("client-id");
+        String clientId = request.getHeader("client-id");
+        return clientId != null ? clientId : "";
     }
 
     public String getToken(){
         HttpServletRequest request = getHttpRequest();
-        return request.getHeader("Authorization");
+        String authorizationHeader = request.getHeader("Authorization");
+        return authorizationHeader != null ? authorizationHeader : "";
     }
 
     public String formatRequest(HttpServletRequest request) {

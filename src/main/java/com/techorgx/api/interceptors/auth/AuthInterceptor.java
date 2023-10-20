@@ -58,7 +58,10 @@ public class AuthInterceptor {
         if (!enabled || ( Objects.equals(bypass, headerUtils.getClientId()) && Arrays.asList(activeProfiles).contains("local")) ) {
             return;
         }
-        validateToken();
+        else if( headerUtils.getToken() != null && !headerUtils.getToken().isEmpty()) {
+            validateToken();
+        }
+        throw new AuthenticationFailedException(HttpStatus.UNAUTHORIZED, "Missing auth token");
     }
 
     private void validateToken() {
@@ -78,7 +81,7 @@ public class AuthInterceptor {
 
            } catch (Exception e) {
                 logger.error("Unable to read local test secret key or Invalid token " + e);
-                throw new AuthenticationFailedException(HttpStatus.INTERNAL_SERVER_ERROR, null);
+                throw new AuthenticationFailedException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Error");
            }
 
     }
