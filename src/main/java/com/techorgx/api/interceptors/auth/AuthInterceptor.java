@@ -61,7 +61,9 @@ public class AuthInterceptor {
         else if( headerUtils.getToken() != null && !headerUtils.getToken().isEmpty()) {
             validateToken();
         }
-        throw new AuthenticationFailedException(HttpStatus.UNAUTHORIZED, "Missing auth token");
+        else {
+            throw new AuthenticationFailedException(HttpStatus.UNAUTHORIZED, "Missing auth token");
+        }
     }
 
     private void validateToken() {
