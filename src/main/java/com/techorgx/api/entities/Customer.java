@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Customer {
 
     @DynamoDBHashKey
-	private String id;
+	private String username;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -21,8 +21,8 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer(String id, String firstName, String lastName, String address, String city, String pincode, String email) {
-		this.id = id;
+	public Customer(String username, String firstName, String lastName, String address, String city, String pincode, String email) {
+		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -34,7 +34,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer{" +
-				"id='" + id + '\'' +
+				"username='" + username + '\'' +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
 				", address='" + address + '\'' +

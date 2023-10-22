@@ -18,7 +18,7 @@ public class CustomerService {
 
 	public String saveCustomer(CustomerRequestModel cm) {
 		Customer customer = new Customer(
-				cm.getId(),
+				cm.getUsername(),
 				cm.getFirstName(),
 				cm.getLastName(),
 				cm.getAddress(),
@@ -27,7 +27,7 @@ public class CustomerService {
 				cm.getEmail()
 		);
 		customerRepo.save(customer);
-		return customer.getId();
+		return customer.getUsername();
 	}
 	
 	public CustomerResponseModel getCustomer(String id) {
@@ -36,7 +36,7 @@ public class CustomerService {
 
         return customer
 				.map(cm -> new CustomerResponseModel(
-						cm.getId(),
+						cm.getUsername(),
 						cm.getFirstName(),
 						cm.getLastName(),
 						cm.getAddress(),
