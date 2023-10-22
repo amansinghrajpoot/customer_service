@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CustomerResponseModel {
-    private String id;
+    private String username;
     private String firstName;
     private String lastName;
     private String address;
@@ -16,14 +16,14 @@ public class CustomerResponseModel {
     public CustomerResponseModel() {
     }
 
-    public CustomerResponseModel(String id, String firstName, String lastName, String address, String city, String pincode, String email) {
+    public CustomerResponseModel(String username, String firstName, String lastName, String address, String city, String pincode, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.city = city;
         this.pincode = pincode;
         this.email = email;
-        this.id = id;
+        this.username = username;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class CustomerResponseModel {
                 ", city='" + city + '\'' +
                 ", pincode='" + pincode + '\'' +
                 ", email='" + email + '\'' +
-                ", id='" + id + '\'' +
+                ", username='" + username + '\'' +
                 '}';
     }
 }

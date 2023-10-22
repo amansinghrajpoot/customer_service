@@ -2,13 +2,13 @@
   "TableName": "Customer",
   "AttributeDefinitions": [
     {
-      "AttributeName": "id",
+      "AttributeName": "username",
       "AttributeType": "S"
     }
   ],
   "KeySchema": [
     {
-      "AttributeName": "id",
+      "AttributeName": "username",
       "KeyType": "HASH"
     }
   ],
