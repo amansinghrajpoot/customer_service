@@ -1,6 +1,8 @@
 package com.techorgx.api.repository;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.DeleteItemRequest;
 import com.techorgx.api.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,5 +25,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     public Optional<Customer> findById(String id) {
         Customer customer = dynamoDBMapper.load(Customer.class, id);
         return Optional.ofNullable(customer);
+    }
+
+    @Override
+    public void deleteItem(String id) {
+        Customer customer = new Customer();
+        customer.setUsername(id);
+        dynamoDBMapper.delete(customer);
     }
 }
