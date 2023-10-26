@@ -34,4 +34,14 @@ public class CustomerController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping(path = "/deletecustomer", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HttpStatus deleteCustomer(@RequestParam(name = "id") String id){
+        try {
+            cs.deleteCustomer(id);
+        } catch (Exception e) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        return HttpStatus.ACCEPTED;
+    }
 }

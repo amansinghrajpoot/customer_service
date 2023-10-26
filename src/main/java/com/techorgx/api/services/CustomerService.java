@@ -46,4 +46,8 @@ public class CustomerService {
 				))
 				.orElse(null);
 	}
+
+	public void deleteCustomer(String id) {
+		customerRepo.deleteItem(id);
+	}
 }
