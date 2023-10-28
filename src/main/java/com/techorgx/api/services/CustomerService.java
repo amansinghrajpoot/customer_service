@@ -29,9 +29,7 @@ public class CustomerService {
 	}
 	
 	public CustomerResponseModel getCustomer(String id) {
-
 		Optional<Customer> customer = customerRepo.findById(id);
-
         return customer.map(value -> customerMapper.mapToCustomerResponse(value)).orElse(null);
     }
 
