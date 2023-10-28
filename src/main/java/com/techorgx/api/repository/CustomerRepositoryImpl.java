@@ -17,7 +17,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public <S extends Customer> S save(S entity) {
-        dynamoDBMapper.save(entity);
+        Optional<Customer> customer = findById(entity.getUsername());
+        if (customer.isEmpty()) {
+            dynamoDBMapper.save(entity);
+        } else {
+           return null;
+        }
         return entity;
     }
 

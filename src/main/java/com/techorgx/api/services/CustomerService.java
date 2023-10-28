@@ -26,8 +26,11 @@ public class CustomerService {
 				cm.getPincode(),
 				cm.getEmail()
 		);
-		customerRepo.save(customer);
-		return customer.getUsername();
+		Customer savedCustomer = customerRepo.save(customer);
+		if (savedCustomer != null) {
+			return customer.getUsername();
+		}
+		return null;
 	}
 	
 	public CustomerResponseModel getCustomer(String id) {
