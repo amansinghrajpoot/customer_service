@@ -47,4 +47,14 @@ public class CustomerController {
         }
         return HttpStatus.ACCEPTED;
     }
+
+    @PutMapping(path = "/updatecustomer", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HttpStatus updateCustomer(@RequestBody CustomerRequestModel cm) {
+        try {
+            cs.updateCustomer(cm);
+        } catch (Exception e) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        return HttpStatus.ACCEPTED;
+    }
 }

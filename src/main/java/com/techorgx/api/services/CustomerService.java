@@ -53,4 +53,17 @@ public class CustomerService {
 	public void deleteCustomer(String id) {
 		customerRepo.deleteItem(id);
 	}
+
+	public void updateCustomer(CustomerRequestModel cm) {
+		Customer customer = new Customer(
+				cm.getUsername(),
+				cm.getFirstName(),
+				cm.getLastName(),
+				cm.getAddress(),
+				cm.getCity(),
+				cm.getPincode(),
+				cm.getEmail()
+		);
+		customerRepo.updateItem(customer);
+	}
 }

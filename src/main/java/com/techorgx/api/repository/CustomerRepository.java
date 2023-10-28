@@ -12,4 +12,6 @@ public interface CustomerRepository {
     Optional<Customer> findById(String id);
 
     void deleteItem(String id);
+
+    <S extends Customer> void updateItem(S entity);
 }
