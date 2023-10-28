@@ -21,7 +21,10 @@ public class CustomerController {
     @PostMapping(path = "/addcustomer", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> addCustomer(@RequestBody CustomerRequestModel cm) {
         String customerId = cs.saveCustomer(cm);
-        return new ResponseEntity<>(customerId, HttpStatus.ACCEPTED);
+        if (customerId != null) {
+            return new ResponseEntity<>(customerId, HttpStatus.ACCEPTED);
+        }
+        return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
     @GetMapping(path = "/getcustomer", produces = MediaType.APPLICATION_JSON_VALUE)
