@@ -76,7 +76,7 @@ curl \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
   -H "Authorization: Bearer <JWT TOKEN>" \
-  http://localhost:7979/v1/customerservice/addcustomer \
+  http://localhost:7979/v1/customer-service/add-customer \
   -d '{<DATA>}'
 ```
 ```bash
@@ -85,7 +85,7 @@ curl \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
   -H "Authorization: Bearer <JWT TOKEN>" \
-  "http://localhost:7979/v1/customerservice/getcustomer?id=johndoe"
+  "http://localhost:7979/v1/customer-service/get-customer?id=johndoe"
 ```
 ```bash
 curl \
@@ -93,14 +93,14 @@ curl \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
   -H "Authorization: Bearer <JWT TOKEN>" \
-  "http://localhost:7979/v1/customerservice/deletecustomer?id=johndoe"
+  "http://localhost:7979/v1/customer-service/delete-customer?id=johndoe"
 ```
 ```bash
 curl \
   -X PUT -i \
   -H "client-id: test" \
   -H "Authorization: Bearer <JWT TOKEN>" \
-   http://localhost:7979/v1/customerservice/updatecustomer \  
+   http://localhost:7979/v1/customer-service/update-customer \  
   -d '{<DATA>}'      
 ```
 You can bypass Authentication in local environment by sending header "client-id: test"
@@ -109,7 +109,7 @@ curl \
   -X POST -i \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
-  http://localhost:7979/v1/customerservice/addcustomer \
+  http://localhost:7979/v1/customer-service/add-customer \
   -d '{<DATA>}'
 ```
 ```bash
@@ -117,21 +117,21 @@ curl \
   -X GET -i \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
-  "http://localhost:7979/v1/customerservice/getcustomer?id=johndoe"
+  "http://localhost:7979/v1/customer-service/get-customer?id=johndoe"
 ```
 ```bash
 curl \
   -X GET -i \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
-  "http://localhost:7979/v1/customerservice/deletecustomer?id=johndoe"
+  "http://localhost:7979/v1/customer-service/delete-customer?id=johndoe"
 ```
 ```bash
 curl \
   -X PUT -i \
   -H "Content-Type: application/json" \
   -H "client-id: test" \
-  http://localhost:7979/v1/customerservice/updatecustomer \        
+  http://localhost:7979/v1/customer-service/update-customer \        
   -d '{<DATA>}'
 ```
 Or send this JWT on local environment
@@ -140,7 +140,7 @@ curl \
   -X POST -i \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTc0NTA0NTksImlzcyI6Ind3dy5hY21lLmNvbSIsInN1YiI6ImYxZTMzYWIzLTAyN2YtNDdjNS1iYjA3LThkZDhhYjM3YTJkMyJ9.A2zgvSQ6IK4W0hRnDlPkEMVEMmz6fGGQI-6qzT20PSVS8auoXA7FPA67yK-t-YtXWE2qOsSuzgWWb1TyD0zpS2IZNiJ03augB2zRSYq6cOGVyP5wfllGxJMjc7Bpje6chqOqUetG_2H0I8tnp-qd0GBbShCmK7-ZwV1WXQR6b7fyzSqAxf13TR4gCMiD1A8AnkVJqXlEGJBejhy3ooQ24osxo3QMoWpHFR-8Jr33-9USs8_zesBUdRqEbJLDU_eVBiCDZEOipPHF6o_ZmW1emBQLRc7d24f6W2omi5kzHN4npiOraFkaNeS1QeasOM002GcoHo4ClJslUME_3sEVnw" \
-  http://localhost:7979/v1/customerservice/addcustomer \
+  http://localhost:7979/v1/customer-service/add-customer \
   -d '{<DATA>}'
 ```
 ```bash
@@ -148,21 +148,21 @@ curl \
   -X GET -i \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTc0NTA0NTksImlzcyI6Ind3dy5hY21lLmNvbSIsInN1YiI6ImYxZTMzYWIzLTAyN2YtNDdjNS1iYjA3LThkZDhhYjM3YTJkMyJ9.A2zgvSQ6IK4W0hRnDlPkEMVEMmz6fGGQI-6qzT20PSVS8auoXA7FPA67yK-t-YtXWE2qOsSuzgWWb1TyD0zpS2IZNiJ03augB2zRSYq6cOGVyP5wfllGxJMjc7Bpje6chqOqUetG_2H0I8tnp-qd0GBbShCmK7-ZwV1WXQR6b7fyzSqAxf13TR4gCMiD1A8AnkVJqXlEGJBejhy3ooQ24osxo3QMoWpHFR-8Jr33-9USs8_zesBUdRqEbJLDU_eVBiCDZEOipPHF6o_ZmW1emBQLRc7d24f6W2omi5kzHN4npiOraFkaNeS1QeasOM002GcoHo4ClJslUME_3sEVnw" \
-  "http://localhost:7979/v1/customerservice/getcustomer?id=johndoe"
+  "http://localhost:7979/v1/customer-service/get-customer?id=johndoe"
 ```
 ```bash
 curl \
   -X GET -i \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTc0NTA0NTksImlzcyI6Ind3dy5hY21lLmNvbSIsInN1YiI6ImYxZTMzYWIzLTAyN2YtNDdjNS1iYjA3LThkZDhhYjM3YTJkMyJ9.A2zgvSQ6IK4W0hRnDlPkEMVEMmz6fGGQI-6qzT20PSVS8auoXA7FPA67yK-t-YtXWE2qOsSuzgWWb1TyD0zpS2IZNiJ03augB2zRSYq6cOGVyP5wfllGxJMjc7Bpje6chqOqUetG_2H0I8tnp-qd0GBbShCmK7-ZwV1WXQR6b7fyzSqAxf13TR4gCMiD1A8AnkVJqXlEGJBejhy3ooQ24osxo3QMoWpHFR-8Jr33-9USs8_zesBUdRqEbJLDU_eVBiCDZEOipPHF6o_ZmW1emBQLRc7d24f6W2omi5kzHN4npiOraFkaNeS1QeasOM002GcoHo4ClJslUME_3sEVnw" \
-  "http://localhost:7979/v1/customerservice/deletecustomer?id=johndoe"
+  "http://localhost:7979/v1/customer-service/delete-customer?id=johndoe"
 ```
 ```bash
 curl \
   -X PUT -i \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTc0NTA0NTksImlzcyI6Ind3dy5hY21lLmNvbSIsInN1YiI6ImYxZTMzYWIzLTAyN2YtNDdjNS1iYjA3LThkZDhhYjM3YTJkMyJ9.A2zgvSQ6IK4W0hRnDlPkEMVEMmz6fGGQI-6qzT20PSVS8auoXA7FPA67yK-t-YtXWE2qOsSuzgWWb1TyD0zpS2IZNiJ03augB2zRSYq6cOGVyP5wfllGxJMjc7Bpje6chqOqUetG_2H0I8tnp-qd0GBbShCmK7-ZwV1WXQR6b7fyzSqAxf13TR4gCMiD1A8AnkVJqXlEGJBejhy3ooQ24osxo3QMoWpHFR-8Jr33-9USs8_zesBUdRqEbJLDU_eVBiCDZEOipPHF6o_ZmW1emBQLRc7d24f6W2omi5kzHN4npiOraFkaNeS1QeasOM002GcoHo4ClJslUME_3sEVnw" \
-  http://localhost:7979/v1/customerservice/updatecustomer \        
+  http://localhost:7979/v1/customer-service/update-customer \        
   -d '{<DATA>}'
 ```
 Sample Data for POST and PUT requests
