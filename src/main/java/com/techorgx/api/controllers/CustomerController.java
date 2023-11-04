@@ -12,13 +12,13 @@ import com.techorgx.api.models.CustomerRequestModel;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping(value = "/v1/customerservice")
+@RequestMapping(value = "/v1/customer-service")
 public class CustomerController {
 
     @Autowired
     private CustomerService cs;
 
-    @PostMapping(path = "/addcustomer", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/add-customer", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> addCustomer(@RequestBody CustomerRequestModel cm) {
         String customerId = cs.saveCustomer(cm);
         if (customerId != null) {
@@ -27,7 +27,7 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
-    @GetMapping(path = "/getcustomer", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/get-customer", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CustomerResponseModel> getCustomer(@RequestParam(name = "id") String id) {
         CustomerResponseModel cm = cs.getCustomer(id);
         if (cm != null){
@@ -38,7 +38,7 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(path = "/deletecustomer", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/delete-customer", produces = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus deleteCustomer(@RequestParam(name = "id") String id){
         try {
             cs.deleteCustomer(id);
@@ -48,7 +48,7 @@ public class CustomerController {
         return HttpStatus.ACCEPTED;
     }
 
-    @PutMapping(path = "/updatecustomer", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/update-customer", produces = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus updateCustomer(@RequestBody CustomerRequestModel cm) {
         try {
             cs.updateCustomer(cm);
