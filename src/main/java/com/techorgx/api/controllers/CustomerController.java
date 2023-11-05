@@ -38,7 +38,7 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(path = "/deletecustomer", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(path = "/deletecustomer", produces = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus deleteCustomer(@RequestParam(name = "id") String id){
         try {
             cs.deleteCustomer(id);
