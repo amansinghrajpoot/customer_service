@@ -30,8 +30,6 @@ public class CustomerServiceTest {
         Response response = UserEndPoints.createUser(userPayload);
         response.then().log().all();
         Assert.assertEquals(response.statusCode(), 202);
-
-
     }
 
     @Test(priority = 2)

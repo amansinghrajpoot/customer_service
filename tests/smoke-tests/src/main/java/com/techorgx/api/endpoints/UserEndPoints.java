@@ -2,15 +2,11 @@ package com.techorgx.api.endpoints;
 
 // UserEndPints.java
 // Created for perform Create, Read, Update, Delete requests t the user API
-
 import com.techorgx.api.payload.User;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-
 import static io.restassured.RestAssured.given;
-
 public class UserEndPoints {
-
     public static Response createUser(User payload) {
         Response response = given()
                 .contentType(ContentType.JSON)
@@ -21,7 +17,6 @@ public class UserEndPoints {
                 .post(Routes.POST_URL);
         return response;
     }
-
     public static Response readUser(String username) {
         System.out.println("readUser " + username);
         String id = username;
@@ -30,10 +25,8 @@ public class UserEndPoints {
                         .header("client-id", "test")
                      .when()
                    .get(Routes.GET_URL);
-
         return response;
     }
-
     public static Response updateUser (String username, User payload)
     {
         Response response=given()
@@ -46,7 +39,6 @@ public class UserEndPoints {
                 .put(Routes.UPDATE_URL);
         return response;
     }
-
     public static Response deleteUser (String username)
     {
         Response response=given()

@@ -1,6 +1,5 @@
 package com.techorgx.api;
 
-
 import com.google.gson.JsonObject;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -13,12 +12,8 @@ import org.apache.http.HttpStatus;
 import org.codehaus.groovy.transform.SourceURIASTTransformation;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.HashMap;
-
 import static io.restassured.RestAssured.*;
-
-
 public class Get {
     @Test
     void test1()
@@ -28,10 +23,6 @@ public class Get {
         Response response = RestAssured.given().param("id","653ce5d043e4d487a291e893").header("client-id", "test").get();
         System.out.println("StatusCode " + response.getStatusCode());
         System.out.println("Body " + response.getBody().asString());
-
-
-
-
     }
     @Test
     void test2() {
@@ -51,10 +42,6 @@ public class Get {
                 .log()
                 .all()
                 .statusCode(HttpStatus.SC_ACCEPTED);
-
-
-
-
     }
 }
 
