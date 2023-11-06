@@ -55,7 +55,7 @@ public class UserEndPoints {
                 .queryParam("id" , username)
                 .header("client-id", "test")
                 .when()
-                .get(Routes.DELETE_URL);
+                .delete(Routes.DELETE_URL);
         return response;
     }
 }
