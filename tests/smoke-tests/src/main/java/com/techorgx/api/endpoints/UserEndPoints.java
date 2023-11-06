@@ -7,11 +7,13 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 public class UserEndPoints {
+
+    private final static String CLIENT_ID = "test";
     public static Response createUser(User payload) {
         Response response = given()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .header("client-id", "test")
+                .header("client-id", CLIENT_ID)
                 .body(payload)
                 .when()
                 .post(Routes.POST_URL);
@@ -22,7 +24,7 @@ public class UserEndPoints {
         String id = username;
         Response response = given()
                         .queryParam("id", username)
-                        .header("client-id", "test")
+                        .header("client-id", CLIENT_ID)
                      .when()
                    .get(Routes.GET_URL);
         return response;
@@ -33,7 +35,7 @@ public class UserEndPoints {
          .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .queryParam("id" , username)
-                .header("client-id", "test")
+                .header("client-id", CLIENT_ID)
                 .body (payload)
                 .when()
                 .put(Routes.UPDATE_URL);
@@ -45,7 +47,7 @@ public class UserEndPoints {
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .queryParam("id" , username)
-                .header("client-id", "test")
+                .header("client-id", CLIENT_ID)
                 .when()
                 .delete(Routes.DELETE_URL);
         return response;

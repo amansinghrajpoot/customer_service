@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.techorgx.api.endpoints.UserEndPoints;
 import com.techorgx.api.payload.User;
 import io.restassured.response.Response;
+import org.apache.http.HttpStatus;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -46,13 +47,13 @@ public class CustomerServiceTest {
         userPayload.setLastName(faker.name().lastName());
 
         Response response = UserEndPoints.updateUser(this.userPayload.getUsername(), userPayload);
-        response.then().log().all();
-        Assert.assertEquals(response.statusCode(), 200);
+        response.then().log().all()
+        .statusCode(HttpStatus.SC_OK);
 
         //Checking data after update
         Response responseAfterUpdation=UserEndPoints.readUser (this.userPayload.getUsername());
-        responseAfterUpdation.then().log().all();
-        Assert.assertEquals(responseAfterUpdation.getStatusCode (), 200);
+        responseAfterUpdation.then().log().all()
+        .statusCode(HttpStatus.SC_OK);
     }
 
     @Test(priority = 4)
