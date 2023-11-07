@@ -1,13 +1,14 @@
 package com.techorgx.api.payload;
 
 public class User {
-    String city;
-    String pincode;
-    String email;
-    String username;
-    String firstName;
-    String lastName;
-    String address;
+    private String city;
+    private String pincode;
+    private String email;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String address;
+
     public String getUsername() {
         return username;
     }

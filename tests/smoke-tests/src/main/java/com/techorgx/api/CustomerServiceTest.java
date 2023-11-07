@@ -5,7 +5,6 @@ import com.techorgx.api.endpoints.UserEndPoints;
 import com.techorgx.api.payload.User;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -29,15 +28,15 @@ public class CustomerServiceTest {
     @Test(priority = 1)
     public void testPostUser() {
         Response response = UserEndPoints.createUser(userPayload);
-        response.then().log().all();
-        Assert.assertEquals(response.statusCode(), 202);
+        response.then().log().all()
+        .statusCode(HttpStatus.SC_ACCEPTED);
     }
 
     @Test(priority = 2)
     public void testGetUserByName() {
         Response response = UserEndPoints.readUser(this.userPayload.getUsername());
-        response.then().log().all();
-        Assert.assertEquals(response.statusCode(), 200);
+        response.then().log().all()
+        .statusCode(HttpStatus.SC_OK);
     }
 
     @Test(priority = 3)
@@ -59,7 +58,7 @@ public class CustomerServiceTest {
     @Test(priority = 4)
     public void testDeleteUserByName() {
         Response response = UserEndPoints.deleteUser(this.userPayload.getUsername());
-        response.then().log().all();
-        Assert.assertEquals(response.statusCode(), 200);
+                 response.then().log().all()
+                         .statusCode(HttpStatus.SC_OK);
     }
 }
