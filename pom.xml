@@ -23,11 +23,11 @@
 		<log4j.version>2.17.1</log4j.version>
 		<bson.version>2.3</bson.version>
 		<fusionauth.version>5.3.0</fusionauth.version>
-		<jcommander>1.82</jcommander>
-		<gson>2.10.1</gson>
-		<rest-assured>5.3.1</rest-assured>
-		<jackson-asl>0.9.5</jackson-asl>
-		<javafaker>1.0.2</javafaker>
+		<jcommander.version>1.82</jcommander.version>
+		<gson.version>2.10.1</gson.version>
+		<rest-assured.version>5.3.1</rest-assured.version>
+		<jackson-asl.version>0.9.5</jackson-asl.version>
+		<javafaker.version>1.0.2</javafaker.version>
 
 	</properties>
 
