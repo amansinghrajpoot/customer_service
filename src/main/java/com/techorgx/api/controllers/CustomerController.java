@@ -22,7 +22,7 @@ public class CustomerController {
     public ResponseEntity<String> addCustomer(@RequestBody CustomerRequestModel cm) {
         String customerId = cs.saveCustomer(cm);
         if (customerId != null) {
-            return new ResponseEntity<>(customerId, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(customerId, HttpStatus.CREATED);
         }
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
@@ -45,7 +45,7 @@ public class CustomerController {
         } catch (Exception e) {
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return HttpStatus.ACCEPTED;
+        return HttpStatus.OK;
     }
 
     @PutMapping(path = "/update-customer", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -55,6 +55,6 @@ public class CustomerController {
         } catch (Exception e) {
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return HttpStatus.ACCEPTED;
+        return HttpStatus.OK;
     }
 }
