@@ -22,7 +22,7 @@ public class CustomerController {
     public ResponseEntity<String> addCustomer(@RequestBody CustomerRequestModel cm) {
         String customerId = cs.saveCustomer(cm);
         if (customerId != null) {
-            return new ResponseEntity<>(customerId, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(customerId, HttpStatus.CREATED);
         }
         return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
@@ -38,14 +38,14 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(path = "/delete-customer", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(path = "/delete-customer", produces = MediaType.APPLICATION_JSON_VALUE)
     public HttpStatus deleteCustomer(@RequestParam(name = "id") String id){
         try {
             cs.deleteCustomer(id);
         } catch (Exception e) {
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return HttpStatus.ACCEPTED;
+        return HttpStatus.OK;
     }
 
     @PutMapping(path = "/update-customer", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -55,6 +55,6 @@ public class CustomerController {
         } catch (Exception e) {
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return HttpStatus.ACCEPTED;
+        return HttpStatus.OK;
     }
 }
