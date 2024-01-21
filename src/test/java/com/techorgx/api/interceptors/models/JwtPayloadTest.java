@@ -1,4 +1,4 @@
-package interceptors.auth.models;
+package com.techorgx.api.interceptors.models;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
