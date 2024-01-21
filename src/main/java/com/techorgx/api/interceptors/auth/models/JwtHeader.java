@@ -16,4 +16,12 @@ public class JwtHeader {
     public String getTyp() {
         return this.typ;
     }
+
+    public void setAlg(String alg) {
+        this.alg = alg;
+    }
+
+    public void setTyp(String typ) {
+        this.typ = typ;
+    }
 }
